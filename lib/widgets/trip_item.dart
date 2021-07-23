@@ -3,9 +3,12 @@ import 'dart:ui';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:traveller/models/trip.dart';
+import 'package:traveller/screens/trip_detail.dart';
 
 class TripItem extends StatelessWidget {
+
   final String title;
+  final String id;
 
   final String imageUrl;
 
@@ -17,7 +20,12 @@ class TripItem extends StatelessWidget {
 
 
   TripItem(
-      {required this.title, required this.imageUrl, required this.duration, required this.tripType, required this.season});
+      {required this.title,
+        required this.id,
+        required this.imageUrl,
+        required this.duration,
+        required this.tripType,
+        required this.season});
 
   get SeasonName {
   if(season==Season.Autumn) {
@@ -40,13 +48,19 @@ get trip_type {
 }
 
 
-  selectTrip() {}
+  selectTrip(BuildContext context) {
+Navigator.of(context).pushNamed(TripDetailScreen.id,arguments:  {
+'id':id
+});
+
+
+  }
 
   @override
   Widget build(BuildContext context) {
     return InkWell(
       splashColor: Colors.cyan,
-      onTap: selectTrip(),
+      onTap: ()=>selectTrip(context),
       child: Card(
         margin: EdgeInsets.all(10),
         elevation: 7.0,

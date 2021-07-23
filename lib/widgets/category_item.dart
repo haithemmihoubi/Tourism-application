@@ -9,9 +9,10 @@ class CategoryItem extends StatelessWidget {
   CategoryItem({required this.id, required this.title, required this.imageUrl});
 
   selectCategory(context) {
-    Navigator.of(context).pushNamed(CategoryTripScreen.screenRoute, arguments: {
+    Navigator.of(context).pushNamed(CategoryTripScreen.screenRoute,
+        arguments: {
       'id': id,
-      'title': title,
+      'title': title
     });
   }
 
