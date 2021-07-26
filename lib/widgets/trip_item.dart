@@ -6,7 +6,6 @@ import 'package:traveller/models/trip.dart';
 import 'package:traveller/screens/trip_detail.dart';
 
 class TripItem extends StatelessWidget {
-
   final String title;
   final String id;
 
@@ -18,49 +17,55 @@ class TripItem extends StatelessWidget {
 
   final Season season;
 
-
   TripItem(
       {required this.title,
-        required this.id,
-        required this.imageUrl,
-        required this.duration,
-        required this.tripType,
-        required this.season});
+      required this.id,
+      required this.imageUrl,
+      required this.duration,
+      required this.tripType,
+      required this.season});
 
   get SeasonName {
-  if(season==Season.Autumn) {
-    return 'Autumn' ;
-  }if(season==Season.Winter) {
-    return 'Autumn' ;
-  }if(season==Season.Spring) {
-    return 'Spring' ;
-  }if(season==Season.Summer) {
-    return 'Summer' ;
+    if (season == Season.Autumn) {
+      return 'Autumn';
+    }
+    if (season == Season.Winter) {
+      return 'Autumn';
+    }
+    if (season == Season.Spring) {
+      return 'Spring';
+    }
+    if (season == Season.Summer) {
+      return 'Summer';
+    }
   }
-}
-get trip_type {
-  switch (tripType) {
-    case TripType.Activities : return 'Activities' ;break ;
-    case TripType.Exploration : return 'Exploration' ;break ;
-    case TripType.Recovery : return 'Recovery' ;break ;
-    case TripType.Therapy : return 'Therapy' ;break ;
-  }
-}
 
+  get trip_type {
+    switch (tripType) {
+      case TripType.Activities:
+        return 'Activities';
+        break;
+      case TripType.Exploration:
+        return 'Exploration';
+        break;
+      case TripType.Recovery:
+        return 'Recovery';
+        break;
+      case TripType.Therapy:
+        return 'Therapy';
+        break;
+    }
+  }
 
   selectTrip(BuildContext context) {
-Navigator.of(context).pushNamed(TripDetailScreen.id,arguments:  {
-'id':id
-});
-
-
+    Navigator.of(context).pushNamed(TripDetailScreen.id, arguments: {'id': id});
   }
 
   @override
   Widget build(BuildContext context) {
     return InkWell(
       splashColor: Colors.cyan,
-      onTap: ()=>selectTrip(context),
+      onTap: () => selectTrip(context),
       child: Card(
         margin: EdgeInsets.all(10),
         elevation: 7.0,
@@ -115,11 +120,31 @@ Navigator.of(context).pushNamed(TripDetailScreen.id,arguments:  {
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   Row(
-                    children: [Icon(Icons.today,color: Colors.amber,), Text("days :$duration")],
-                  ), Row(
-                    children: [Icon(Icons.wb_sunny,color: Colors.amber,), Text("Season :${SeasonName}")],
-                  ), Row(
-                    children: [Icon(Icons.family_restroom,color: Colors.amber,), Text("Type :$trip_type")],
+                    children: [
+                      Icon(
+                        Icons.today,
+                        color: Colors.amber,
+                      ),
+                      Text("days :$duration")
+                    ],
+                  ),
+                  Row(
+                    children: [
+                      Icon(
+                        Icons.wb_sunny,
+                        color: Colors.amber,
+                      ),
+                      Text("Season :${SeasonName}")
+                    ],
+                  ),
+                  Row(
+                    children: [
+                      Icon(
+                        Icons.family_restroom,
+                        color: Colors.amber,
+                      ),
+                      Text("Type :$trip_type")
+                    ],
                   ),
                 ],
               ),

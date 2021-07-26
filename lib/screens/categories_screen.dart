@@ -7,15 +7,7 @@ class CategoriesScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text(
-          'Tourism guide',
-          style: TextStyle(fontWeight: FontWeight.bold, color: Colors.white),
-        ),
-        centerTitle: true,
-      ),
-      body: GridView(
+    return  GridView(
         padding: EdgeInsets.all(10),
         gridDelegate: SliverGridDelegateWithMaxCrossAxisExtent(
           maxCrossAxisExtent: 200,
@@ -25,7 +17,6 @@ class CategoriesScreen extends StatelessWidget {
         ),
         children: Categories_data.map((category) => CategoryItem(id: category.id,title: category.title,imageUrl: category.imageUrl,))
             .toList(),
-      ),
-    );
+      );
   }
 }
