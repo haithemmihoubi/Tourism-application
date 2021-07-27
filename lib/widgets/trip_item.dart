@@ -58,7 +58,10 @@ class TripItem extends StatelessWidget {
   }
 
   selectTrip(BuildContext context) {
-    Navigator.of(context).pushNamed(TripDetailScreen.id, arguments: {'id': id});
+    Navigator.of(context).pushNamed(TripDetailScreen.id, arguments: {'id': id}).then((result) {
+
+      print(result) ;
+    });
   }
 
   @override

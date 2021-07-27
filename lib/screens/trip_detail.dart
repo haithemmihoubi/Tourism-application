@@ -4,15 +4,16 @@ import 'package:traveller/app_data.dart';
 class TripDetailScreen extends StatelessWidget {
   static const id = 'tripDetail';
 
-buildSectionTitle(titletext) {
-  return  Container(
-    margin: EdgeInsets.symmetric(vertical: 10, horizontal: 15),
-    alignment: Alignment.topRight,
-    child: Text(titletext,style: TextStyle(color: Colors.cyan,fontSize: 20),),
-  );
-}
-
-
+  buildSectionTitle(titletext) {
+    return Container(
+      margin: EdgeInsets.symmetric(vertical: 10, horizontal: 15),
+      alignment: Alignment.topRight,
+      child: Text(
+        titletext,
+        style: TextStyle(color: Colors.cyan, fontSize: 20),
+      ),
+    );
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -42,37 +43,11 @@ buildSectionTitle(titletext) {
             SizedBox(
               height: 20,
             ),
-            buildSectionTitle('Activities')
-            ,
+            buildSectionTitle('Activities'),
             SizedBox(
               height: 15,
             ),
             Container(
-              padding: EdgeInsets.all(10),
-                margin: EdgeInsets.symmetric(horizontal: 15),
-                height: 200,
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(10),
-                    color: Colors.white,
-                    border: Border.all(
-                      color: Colors.grey,
-                      
-                    )),
-                child: ListView.builder(
-                  itemBuilder: (ctx, index) {
-                    return Card(
-                      elevation: 0.3,
-                        child: Padding(
-                      padding:
-                          const EdgeInsets.symmetric(horizontal: 10, vertical: 5),
-                      child: Text(selectedTrip.activities[index].toString()),
-                    ));
-                  },
-                  itemCount: selectedTrip.activities.length,
-                )), SizedBox(
-              height: 15,
-            ),
-            buildSectionTitle('Daily program') ,  Container(
                 padding: EdgeInsets.all(10),
                 margin: EdgeInsets.symmetric(horizontal: 15),
                 height: 200,
@@ -81,21 +56,52 @@ buildSectionTitle(titletext) {
                     color: Colors.white,
                     border: Border.all(
                       color: Colors.grey,
-
+                    )),
+                child: ListView.builder(
+                  itemBuilder: (ctx, index) {
+                    return Card(
+                        elevation: 0.3,
+                        child: Padding(
+                          padding: const EdgeInsets.symmetric(
+                              horizontal: 10, vertical: 5),
+                          child:
+                              Text(selectedTrip.activities[index].toString()),
+                        ));
+                  },
+                  itemCount: selectedTrip.activities.length,
+                )),
+            SizedBox(
+              height: 15,
+            ),
+            buildSectionTitle('Daily program'),
+            Container(
+                padding: EdgeInsets.all(10),
+                margin: EdgeInsets.symmetric(horizontal: 15),
+                height: 200,
+                decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(10),
+                    color: Colors.white,
+                    border: Border.all(
+                      color: Colors.grey,
                     )),
                 child: ListView.builder(
                   itemBuilder: (ctx, index) {
                     return Padding(
-                      padding:
-                      const EdgeInsets.symmetric(horizontal: 10, vertical: 5),
+                      padding: const EdgeInsets.symmetric(
+                          horizontal: 10, vertical: 5),
                       child: Column(
-                       children: [
-                         ListTile(
-                           leading: CircleAvatar(child:Text('Day ${index+1}'),),
-                           title: Text(selectedTrip.program[index].toString()),
-                         ),
-                         Divider(height: 60,color: Colors.cyan,),
-                       ],
+                        children: [
+                          ListTile(
+                            leading: CircleAvatar(
+                              child: Text('Day ${index + 1}'),
+                            ),
+                            title: Text(selectedTrip.program[index].toString()),
+                          ),
+                          Divider(
+                            height: 60,
+                            color: Colors.cyan,
+                          ),
+                        ],
                       ),
                     );
                   },
@@ -106,6 +112,12 @@ buildSectionTitle(titletext) {
             ),
           ],
         ),
+      ),
+      floatingActionButton: FloatingActionButton(
+        onPressed: () {
+          Navigator.of(context).pop(tripId);
+        },
+        child: Icon(Icons.delete),
       ),
     );
   }
